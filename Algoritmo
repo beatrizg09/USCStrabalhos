@@ -41,3 +41,26 @@ namespace carioca_29._08
         }
     }
 }
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double L1, L2, area;
+            L1 = double.Parse(Console.ReadLine());
+            L2 = double.Parse(Console.ReadLine());
+            area = L1 * L2;
+            Console.WriteLine(area);
+               
+        }
+    }
+}
