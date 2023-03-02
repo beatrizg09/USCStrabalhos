@@ -13,3 +13,23 @@ public class Main
 	    System.out.println(m);
 	}
 }
+===============================================================================
+
+public class Main
+{
+	public static void main(String[] args) {
+		mensagem();
+	    mensagem ("Bom dia!");
+	    mensagem("Tudo bem ?", "meu nome é Ana");
+	}
+	public static void mensagem(){
+	  	System.out.println("Ola mundo");  
+	  	
+	} 
+	public static void mensagem (String m){
+	    System.out.println(m);
+	}
+	public static void mensagem (String m,String n){
+	    System.out.println(m + n);
+}
+}
