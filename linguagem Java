@@ -1,0 +1,15 @@
+public class Main
+{
+	public static void main(String[] args) {
+		mensagem();
+	    mensagem ("Bom dia!");
+	    mensagem("Tudo bem ?");
+	}
+	public static void mensagem(){
+	  	System.out.println("Ola mundo");  
+	  	
+	} 
+	public static void mensagem (String m){
+	    System.out.println(m);
+	}
+}
