@@ -1,0 +1,365 @@
+******************************************************************************
+ calculadora
+*******************************************************************************/
+public class Main
+{
+public static void main(String[] args) {
+
+System.out.println(soma(10,10));
+potencia(10,2);
+}
+public static int soma(int a, int b) {
+return a + b;
+}
+public static void mensagem(String m) {
+System.out.println(m);
+}
+public static void potencia(double a, double b) {
+  mensagem (a + " elevado a "+ b + " = "+ Math.pow(a,b));
+}
+}
+public class Main
+{
+public static void main(String[] args) {
+
+int a=10, b=2;
+     System.out.println("Soma = "+ soma(a,b));
+     System.out.println("Subtracao = "+ subtracao(a,b));
+     System.out.println("Produto= "+ prod(a,b));
+     System.out.println("Resto = "+ resto(a,b));
+     System.out.println("Divisao = "+ divisao(a,b));
+
+}
+public static int soma(int a, int b){
+        return a+b;
+    }
+    public static int subtracao(int a, int b){
+        return a-b;
+    }
+    public static int prod(int a, int b){
+        return a*b;
+    }
+    public static int resto(int a, int b){
+        return b%a;
+    }
+    public static int divisao(int a, int b){
+       if(b==0)return 0;
+        return a/b;
+    }
+   
+}
+Triangulo
+*******************************************************************************/
+public class Main
+{
+public static void main(String[] args) {
+
+Triangulo x = new Triangulo(5,4,4);
+
+if(x.formaTriangulo() == 0){
+   System.out.println("Os valores nao formam um triangulo");
+}
+else{
+    System.out.println("Os valores formam um triangulo");
+    x.mostraTipo();
+    System.out.println("Perimetro= " + x.perimetro());
+    System.out.println("area = " + x.area());
+}
+}
+}
+public class Triangulo{
+    int ladoa;
+    int ladob;
+    int ladoc;
+   
+    public Triangulo(int a, int b, int c){
+        ladoa = a;
+        ladob = b;
+        ladoc = c;
+    }
+    public int formaTriangulo(){
+        int aux = 0; // nao Ã© um triangulo
+    //maior q o valor absoluto
+        if(ladoa > diferenca(ladob,ladoc) &&
+           ladob > diferenca(ladoa,ladoc) &&
+           ladoc > diferenca(ladoa,ladob) &&
+    //menor q a soma dos outros dois lados
+           ladoa < ladob + ladoc &&
+           ladob < ladoa + ladoc &&
+           ladoc < ladoa + ladob
+        )
+        aux = 1;
+        return aux;
+    }
+    private int diferenca(int a, int b){
+        int aux;
+        if(a > b){
+            aux= a-b;
+        }
+        else{
+            aux= b-a;
+        }
+        return aux;
+    }
+    public void mostraTipo(){
+        //equilatero (3 lados sao iguais)
+        //Isosceles (2 lados sao iguais e um diferente)
+        //Escaleno ( 3 lados sao diferentes)
+       
+        if  (ladoa==ladob && ladoa == ladoc){
+            System.out.println("Equilatero");
+        }
+        else if(ladoa != ladob && ladoa!= ladoc && ladob != ladoc){
+              System.out.println("Escaleno");
+        }
+        else{
+            System.out.println("Isosceles");
+        }
+    }
+    public int perimetro(){
+      return ladoa+ladob+ladoc;
+    }
+    public double area(){
+       
+    }
+   
+   
+}
+30/03 - Testar pilha para converter em Binario
+
+*******************************************************************************/
+public class Main
+{
+public static void main(String[] args) {
+
+TADPilha p = new TADPilha(100);
+int n=10,resto;
+while(n!=0){
+   resto= n%2;
+   p.empilha(resto);
+   n=n/2;
+}
+System.out.println("Mostra ao Contrario");
+p.mostraAoContrario();
+System.out.println("Mostra normal");
+p.mostra();
+System.out.println("a pilha p tem " + p.conta() + " elementos");
+}
+
+}
+Classe Pilha 30/03
+************************************************/
+public class TADPilha{
+    int dados[];
+    int topo;
+    int capacidade;
+   
+    public TADPilha(int c){
+    capacidade = c;
+    topo = -1;
+    dados = new int [capacidade];
+    }
+   
+    public boolean empilha(int x){
+        if(!cheia()){
+        topo++;
+        dados[topo] = x;
+        return true;
+        }
+        System.out.println("cheia !");
+        return false;
+    }
+   
+    public void mostraAoContrario(){
+        for(int i=topo;i>=0;i--){
+            System.out.println(dados[i]);
+        }
+    }
+     public void mostra(){
+        for(int i=0;i<=topo;i++){
+            System.out.println(dados[i]);
+        }
+    }
+   
+    public boolean cheia(){
+        return (topo==capacidade-1);
+       
+    }
+    public boolean vazia(){
+        return (topo==-1);
+    }
+    public int conta(){
+        return topo+1;
+    }
+   
+   
+}
+FILE *arq;
+int quantiLinhas=10;
+char nomeArq[20]="Exemplo.txt";
+
+
+void lerAquivo(){
+    //abra o arquivo para leitura (r)
+    arq = fopen(nomeArq, "r");
+   
+    //Le os dados e imprime na tela
+    char linha[100], *result;
+    int i =1;
+    while(!feof(arq)){
+        result = fgets(linha, 100, arq);
+        if(result) printf("linha %d > %s",i,linha);
+        i++;
+    }
+    fclose(arq);
+}
+void gravarAquivo(){
+   int result;
+   //Abre arquivo para gravaçao (w)
+   arq = fopen(nomeArq, "w");
+   //Grava linha no arquivo
+   for(int i =1;i<=quantiLinhas; i++){
+      fprintf(arq,"Conteudo %d\n",i);
+   }
+   fclose(arq);
+   
+}
+
+void main()
+{
+    printf("\n Gerando o arquivo...");
+    gravarAquivo();
+    printf("\n Lendo o arquivo...\n");
+    lerAquivo();
+   
+}
+void lerAquivo(){
+    //abra o arquivo para leitura (r)
+    arq = fopen(nomeArq, "r");
+   
+    //Le os dados e imprime na tela
+    char linha[100], *result;
+    int i =1;
+    while(!feof(arq)){
+        result = fgets(linha, 100, arq);
+        if(result) printf("%s");
+        //printf("linha %d > %s",i,linha);
+        i++;
+    }
+    fclose(arq);
+}
+void gravarAquivo(){
+   int result;
+   //Abre arquivo para gravaçao (w)
+   arq = fopen(nomeArq, "w");
+   //Grava linha no arquivo
+   fprintf(arq, "TABUADA\n");
+   for(int i =1;i<=quantiLinhas; i++){
+     
+       
+       
+      fprintf(arq,"8 X %d = %d\n",i,8*i);
+     
+   }
+   fclose(arq);
+   
+}
+
+void main()
+{
+    printf("\n Gerando o arquivo...");
+    gravarAquivo();
+    printf("\n Lendo o arquivo...\n");
+    lerAquivo();
+   
+}
+public class Main
+{
+public static void main(String[] args) {
+// Criar uma pilha p - chamando o CONSTRUTOR
+TADPilha p = new TADPilha (100);
+
+String expressao="2345+*6+*"; //"2345+*6+*";
+char aux;
+int a,b,res=0;
+
+for (int i=0; i< expressao.length(); i++)  {
+   aux = expressao.charAt(i);
+   // Se for numero, empilha
+   
+   int c = Character.getNumericValue(aux);
+   if (aux>='0' && aux <= '9') p.empilha(c);
+   // se for operacao,
+   //   desempilha 2 (a e b)
+   //   calcula a operacao e empilha o resultado
+   else {
+        a =  p.desempilha();
+        b =  p.desempilha();
+       if (aux=='+') res= a+b;
+       if (aux=='-') res= a-b;
+       if (aux=='*') res= a*b;
+       if (aux=='/') res= a/b;
+      p.empilha(res);
+   }
+}
+        res = p.desempilha();
+        System.out.println ("Resultado=" + res);
+
+}
+}
+public class TADPilha {
+    // atributos
+    int dados[];
+    int topo;
+    int capacidade;
+   
+    // Construtor
+    public TADPilha (int c) {
+       capacidade = c;
+       topo = -1;
+       dados = new int [capacidade];
+    }
+
+    // mÃ©todos
+    public boolean empilha(int x) {
+        if (!cheia()) {
+           topo++;  // topo = topo + 1;
+           dados[topo] = x;
+           return true;
+        }
+        System.out.print ("cheia !");
+        return false;
+    }
+    public int desempilha() {
+        int aux=0;
+        if (!vazia()) {
+            aux = dados[topo];
+            topo--;  // topo = topo + 1;
+        }
+        return aux;
+    }
+
+    public void mostraAoContrario () {
+       for (int i=topo; i>=0; i--)
+           System.out.println (dados[i]);    
+    }
+    public void mostra () {
+       for (int i=0; i<=topo; i++)
+           System.out.println (dados[i]);    
+    }
+   
+    public boolean cheia() {
+        return (topo==capacidade-1);
+    }
+    public boolean vazia() {
+        return (topo==-1);
+    }
+    public int conta () {
+        return topo+1;
+    }
+ 
+   
+   
+   
+   
+ }
